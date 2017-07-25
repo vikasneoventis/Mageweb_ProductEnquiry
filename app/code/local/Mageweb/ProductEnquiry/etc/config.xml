@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Mageweb_ProductEnquiry>
+      <version>0.1.0</version>
+    </Mageweb_ProductEnquiry>
+  </modules>
+  <frontend>
+    <routers>
+      <productenquiry>
+        <use>standard</use>
+          <args>
+            <module>Mageweb_ProductEnquiry</module>
+            <frontName>productenquiry</frontName>
+          </args>
+      </productenquiry>
+    </routers>
+  </frontend>
+  <global>
+  
+		<template>
+            <email>
+                
+                <productcontacts_email_email_template translate="label" module="contacts">
+                    <label>Contact Form</label>
+                    <file>contact_form_new.html</file>
+                    <type>text</type>
+                </productcontacts_email_email_template>
+            </email>
+        </template>
+  
+		<rewrite>        
+            <mageweb_productenquiry_contacts_indexcontroller>
+                <from><![CDATA[#^/contacts/index/#]]></from> <!-- Mage_Contacts_IndexController  -->
+                <to>/productenquiry/contacts_index/</to> <!-- Mageweb_ProductEnquiry_Contacts_IndexController  -->
+            </mageweb_productenquiry_contacts_indexcontroller>
+		</rewrite>
+    <helpers>
+      <productenquiry>
+        <class>Mageweb_ProductEnquiry_Helper</class>
+      </productenquiry>
+    </helpers>
+  </global>
+  <admin>
+	<routers>
+	  <productenquiry>
+	    <use>admin</use>
+		<args>
+		  <module>Mageweb_ProductEnquiry</module>
+		  <frontName>admin_productenquiry</frontName>
+		</args>
+	  </productenquiry>
+	</routers>
+  </admin>
+</config> 
